@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Temp\Compiled-Flare.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\Scripts\General Scripts\MenuObject.cs">
     <Files>
-      <File FileName="Temp\Compiled-Flare.shader" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Scripts\General Scripts\MenuObject.cs" Line="52" Column="5" />
       <File FileName="Assets\Standard Assets\Scripts\Camera Scripts\KeyboardOrbit.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
