@@ -14,10 +14,10 @@ public class KeyboardOrbit : MonoBehaviour {
 	private bool qDown;
 	// Use this for initialization
 	void Start (){
-		zoomSpeed = 3.0f;
+		zoomSpeed = 2.0f;
 		minZoom = 20.0f;
 		maxZoom = 1000.0f;
-		cameraSpeed = 3.0f;
+		cameraSpeed = 1.5f;
 		
 		z = 100.0f;
 		x = 1.0f;
