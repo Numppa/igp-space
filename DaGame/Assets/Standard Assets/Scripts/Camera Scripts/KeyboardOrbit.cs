@@ -15,11 +15,11 @@ public class KeyboardOrbit : MonoBehaviour {
 	// Use this for initialization
 	void Start (){
 		zoomSpeed = 2.0f;
-		minZoom = 20.0f;
-		maxZoom = 1000.0f;
+		minZoom = 200.0f;
+		maxZoom = 600.0f;
 		cameraSpeed = 1.5f;
 		
-		z = 100.0f;
+		z = 200.0f;
 		x = 1.0f;
 		y = 1.0f;
 		eDown = false;
