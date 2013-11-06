@@ -5,6 +5,7 @@ public class PlaneObject : MonoBehaviour {
 	
 	private bool hasTurret = false;
 	private bool selected = false;
+	private int guiSelection = 0;
 	public static PlaneObject selection;
 	
 	void Update() {
@@ -48,10 +49,25 @@ public class PlaneObject : MonoBehaviour {
 	
 	void OnGUI() {
 		if(selected) {
+			
+			string[] asd = {"GT","none","none","none","none","none","none","none","none"};
 			GUI.contentColor = Color.green;
 			Rect rect = new Rect(Screen.width-220, 10, 180, Screen.height / 1.3f);
+			Rect rectInside = new Rect(Screen.width-215, Screen.height / 7f, 170, Screen.height / 2.4f);
+			Rect rectBelow = new Rect(Screen.width-215, Screen.height / 1.75f, 170, Screen.height / 6f);
+			Rect rectButton = new Rect(Screen.width-215, Screen.height / 1.35f, 85, Screen.height / 24f);
 			GUI.Box(rect, "WORKSHOP\n\n"+this.gameObject.name);
 			
+			if (guiSelection == 0) {
+			   	GUI.TextArea(rectBelow,"Info:");
+				GUI.Button(rectButton, "Buy");
+			} else {
+			 	
+			}
+			
+			GUI.Box(rectInside, "");
+			guiSelection = GUI.SelectionGrid(rectInside, guiSelection, asd, 3);
+						
 		}
 	}
 }
