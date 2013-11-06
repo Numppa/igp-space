@@ -5,7 +5,7 @@ public class BaseShipBehaviour : MonoBehaviour {
 	public Transform target;
 	public float maxHealth;
 	public float repair;
-	public float resources;
+	public static float resources;
 	
 	private float health;
 	
