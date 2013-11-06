@@ -51,8 +51,6 @@ public class PlaneObject : MonoBehaviour {
 	
 	void OnGUI() {
 		if(selected) {
-			
-			string[] asd = {"GT","none","none","none","none","none","none","none","none"};
 			GUI.contentColor = Color.green;
 			Rect rect = new Rect(Screen.width-220, 10, 180, Screen.height / 1.3f);
 			Rect rectInside = new Rect(Screen.width-215, Screen.height / 7f, 170, Screen.height / 2.4f);

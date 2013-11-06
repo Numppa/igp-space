@@ -19,7 +19,7 @@ public class KeyboardOrbit : MonoBehaviour {
 		maxZoom = 600.0f;
 		cameraSpeed = 1.5f;
 		
-		z = 200.0f;
+		z = 300.0f;
 		x = 1.0f;
 		y = 1.0f;
 		eDown = false;
