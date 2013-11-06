@@ -48,8 +48,10 @@ public class PlaneObject : MonoBehaviour {
 	
 	void OnGUI() {
 		if(selected) {
+			GUI.contentColor = Color.green;
 			Rect rect = new Rect(Screen.width-220, 10, 180, Screen.height / 1.3f);
 			GUI.Box(rect, "WORKSHOP\n\n"+this.gameObject.name);
+			
 		}
 	}
 }

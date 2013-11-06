@@ -5,6 +5,7 @@ public class BaseShipBehaviour : MonoBehaviour {
 	public Transform target;
 	public float maxHealth;
 	public float repair;
+	public float resources;
 	
 	private float health;
 	
@@ -12,6 +13,7 @@ public class BaseShipBehaviour : MonoBehaviour {
 	void Start () {
 		maxHealth = 1000.0f;
 		repair = -0.0f;
+		resources = 150f;
 		health = maxHealth;
 	}
 	
@@ -22,7 +24,7 @@ public class BaseShipBehaviour : MonoBehaviour {
 
 	void OnGUI(){
 		GUI.contentColor = Color.green;
-		GUI.Box(new Rect(10, 10, Screen.width / 2, 20),new GUIContent((int) health + " / " + (int) maxHealth));
+		GUI.Box(new Rect(10, 10, Screen.width / 2, 20),new GUIContent("Resources: " + resources + "   Health: " + (int) health + " / " + (int) maxHealth));
 	}
 	
 }
