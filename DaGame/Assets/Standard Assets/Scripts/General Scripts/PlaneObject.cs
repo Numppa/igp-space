@@ -7,6 +7,7 @@ public class PlaneObject : MonoBehaviour {
 	private bool selected = false;
 	private int guiSelection = 0;
 	public static PlaneObject selection;
+	public GameObject turret;
 	
 	void Update() {
 		if(selection != this) {
@@ -60,13 +61,21 @@ public class PlaneObject : MonoBehaviour {
 			
 			if (guiSelection == 0) {
 			   	GUI.TextArea(rectBelow,"Info:");
-				GUI.Button(rectButton, "Buy");
+				bool buying = GUI.Button(rectButton, "Buy");
+				
+				if (buying) {
+					Instantiate(turret, gameObject.transform.position, gameObject.transform.rotation);
+					selected = false;
+					hasTurret = true;
+				}
+				
 			} else {
 			 	
 			}
 			
 			GUI.Box(rectInside, "");
 			guiSelection = GUI.SelectionGrid(rectInside, guiSelection, asd, 3);
+			
 						
 		}
 	}

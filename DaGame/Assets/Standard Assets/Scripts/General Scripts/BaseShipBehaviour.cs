@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class BaseShipBehaviour : MonoBehaviour {
@@ -25,6 +25,10 @@ public class BaseShipBehaviour : MonoBehaviour {
 	void OnGUI(){
 		GUI.contentColor = Color.green;
 		GUI.Box(new Rect(10, 10, Screen.width / 2, 20),new GUIContent("Resources: " + resources + "   Health: " + (int) health + " / " + (int) maxHealth));
+	}
+	
+	void ChangeResources(int amount) {
+	 	resources +=amount;	
 	}
 	
 }
