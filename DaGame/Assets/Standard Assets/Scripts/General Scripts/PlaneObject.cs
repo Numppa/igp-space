@@ -7,7 +7,7 @@ public class PlaneObject : MonoBehaviour {
 	private bool selected = false;
 	private int guiSelection = 0;
 	public static PlaneObject selection;
-	public GameObject turret;
+	public GameObject[] turrets;
 	
 	void Update() {
 		if(selection != this) {
@@ -64,7 +64,7 @@ public class PlaneObject : MonoBehaviour {
 				bool buying = GUI.Button(rectButton, "Buy");
 				
 				if (buying) {
-					Instantiate(turret, gameObject.transform.position, gameObject.transform.rotation);
+					Instantiate(turrets[0], gameObject.transform.position, gameObject.transform.rotation);
 					selected = false;
 					hasTurret = true;
 				}
