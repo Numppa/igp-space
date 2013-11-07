@@ -15,29 +15,29 @@ Platform assembly: C:\Users\Taha\.ssh\IGPproject\DaGame\DEMO_Data\Managed\Assemb
 Loading C:\Users\Taha\.ssh\IGPproject\DaGame\DEMO_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\Taha\.ssh\IGPproject\DaGame\DEMO_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading C:\Users\Taha\.ssh\IGPproject\DaGame\DEMO_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.075 seconds
+- Completed reload, in  0.049 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.691903 ms
+UnloadTime: 0.404956 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 147.
-Total: 0.617923 ms (FindLiveObjects: 0.019243 ms CreateObjectMapping: 0.011545 ms MarkObjects: 0.060295 ms  DeleteObjects: 0.045328 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 147.
+Total: 0.518703 ms (FindLiveObjects: 0.032071 ms CreateObjectMapping: 0.018387 ms MarkObjects: 0.073550 ms  DeleteObjects: 0.011118 ms)
 
-UnloadTime: 0.404536 ms
+UnloadTime: 0.435317 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 148.
-Total: 0.457562 ms (FindLiveObjects: 0.007269 ms CreateObjectMapping: 0.007269 ms MarkObjects: 0.059440 ms  DeleteObjects: 0.017532 ms)
+Total: 0.463967 ms (FindLiveObjects: 0.006841 ms CreateObjectMapping: 0.007269 ms MarkObjects: 0.057301 ms  DeleteObjects: 0.018387 ms)
 
 The referenced script on this Behaviour is missing!
  
 (Filename:  Line: 1657)
 
-UnloadTime: 0.358353 ms
+UnloadTime: 0.430185 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 616.
-Total: 0.603812 ms (FindLiveObjects: 0.023947 ms CreateObjectMapping: 0.014111 ms MarkObjects: 0.105624 ms  DeleteObjects: 0.076545 ms)
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 616.
+Total: 0.605509 ms (FindLiveObjects: 0.021380 ms CreateObjectMapping: 0.011545 ms MarkObjects: 0.110753 ms  DeleteObjects: 0.081675 ms)
 
