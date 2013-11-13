@@ -3,10 +3,10 @@ using System.Collections;
 
 public class KeyboardOrbit : MonoBehaviour {
 	public Transform target;
-	private float zoomSpeed;
-	private float minZoom;
-	private float maxZoom;
-	private float cameraSpeed;
+	public float zoomSpeed;
+	public float minZoom;
+	public float maxZoom;
+	public float cameraSpeed;
 	private float z;
 	private float x;
 	private float y;
@@ -14,11 +14,6 @@ public class KeyboardOrbit : MonoBehaviour {
 	private bool qDown;
 	// Use this for initialization
 	void Start (){
-		zoomSpeed = 2.0f;
-		minZoom = 200.0f;
-		maxZoom = 600.0f;
-		cameraSpeed = 1.5f;
-		
 		z = 300.0f;
 		x = 1.0f;
 		y = 1.0f;
