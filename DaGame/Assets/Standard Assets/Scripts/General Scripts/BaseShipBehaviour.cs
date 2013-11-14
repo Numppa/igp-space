@@ -31,4 +31,8 @@ public class BaseShipBehaviour : MonoBehaviour {
 	 	resources +=amount;	
 	}
 	
+	public void Hit(float damage) {
+		health -= damage;
+	}
+	
 }
