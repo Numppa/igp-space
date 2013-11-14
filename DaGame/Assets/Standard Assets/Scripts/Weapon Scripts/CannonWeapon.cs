@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RockcetWeapon : MonoBehaviour, Weapon{
+public class CannonWeapon : MonoBehaviour {
 	public int cooldowntime;
 	public bool friendly;
 	
@@ -22,5 +22,4 @@ public class RockcetWeapon : MonoBehaviour, Weapon{
 		if (cooldown >= cooldowntime){
 		}
 	}
-	
 }

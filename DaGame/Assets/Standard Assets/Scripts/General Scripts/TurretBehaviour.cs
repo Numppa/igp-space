@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TurretBehaviour : MonoBehaviour {
-	public Weapon weapon;
+	public Weapon[] weapons;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,6 +14,8 @@ public class TurretBehaviour : MonoBehaviour {
 	}
 	
 	void shoot(GameObject target){
-		weapon.shoot(transform.forward, target);
+		foreach (Weapon w in weapons){
+			w.shoot(transform.forward, target);
+		}
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyBehaviour : MonoBehaviour {
 	public int health;
 	public int radarVisibility;
-	public Weapon weapon;
+	public Weapon[] weapons;
 	
 	public Rigidbody bullet;
 	public float bulletSpeed;
@@ -38,6 +38,8 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 	
 	void shoot(GameObject target){
-		weapon.shoot(transform.forward, target);
+		foreach (Weapon w in weapons){
+			w.shoot(transform.forward, target);
+		}
 	}
 }
