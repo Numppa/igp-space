@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LaserWeapon : MonoBehaviour {
+public class LaserWeapon : AbstractWeapon {
 	public bool friendly;
 	
 	// Use this for initialization
@@ -12,6 +12,9 @@ public class LaserWeapon : MonoBehaviour {
 	void Update () {
 	}
 	
-	public void shoot(Vector3 direction, GameObject target){
+	public override void shoot (Vector3 direction) {
+	}
+	
+	public override void timer () {
 	}
 }

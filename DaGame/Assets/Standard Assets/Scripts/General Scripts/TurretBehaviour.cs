@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class TurretBehaviour : MonoBehaviour {
-	public Weapon[] weapons;
+	public AbstractWeapon weapon;
 	
+	private GameObject[] enemies;
 	// Use this for initialization
 	void Start () {
+		enemies = GameObject.FindGameObjectsWithTag("enemy");
 	}
 	
 	// Update is called once per frame
@@ -13,9 +15,11 @@ public class TurretBehaviour : MonoBehaviour {
 	
 	}
 	
-	void shoot(GameObject target){
-		foreach (Weapon w in weapons){
-			w.shoot(transform.forward, target);
-		}
+	void shoot(){
+		weapon.shoot(transform.forward);
+	}
+	
+	GameObject findClosestEnemy(){
+		return null; 
 	}
 }

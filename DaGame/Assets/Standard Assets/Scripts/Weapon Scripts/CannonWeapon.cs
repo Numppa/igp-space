@@ -1,25 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CannonWeapon : MonoBehaviour {
-	public int cooldowntime;
+public class CannonWeapon : AbstractWeapon {
 	public bool friendly;
+	public int weaponRestTime;
 	
-	private int cooldown;
+	private int restTime;
 	// Use this for initialization
 	void Start () {
-		cooldown = cooldowntime;
+		restTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (cooldown < cooldowntime){
-			cooldown++;
-		}
 	}
 	
-	public void shoot(Vector3 direction, GameObject target){
-		if (cooldown >= cooldowntime){
+	public override void shoot (Vector3 direction) {
+		if (restTime <= 0){
+		}
+		restTime = weaponRestTime;
+	}
+
+	public override void timer () {
+		if (restTime > 0){
+			restTime--;
 		}
 	}
 }
