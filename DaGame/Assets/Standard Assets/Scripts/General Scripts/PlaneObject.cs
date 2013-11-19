@@ -94,4 +94,11 @@ public class PlaneObject : MonoBehaviour {
 						
 		}
 	}
+	
+	void buyTurret(int resources){
+		GameObject go = (GameObject) Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
+		transform.SendMessageUpwards("ChangeResources", resources, SendMessageOptions.DontRequireReceiver);
+		TurretBehaviour tb = new TurretBehaviour();
+		AbstractWeapon aw = null; 
+	}
 }
