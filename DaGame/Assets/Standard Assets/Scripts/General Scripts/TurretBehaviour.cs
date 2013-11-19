@@ -12,7 +12,6 @@ public class TurretBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 	
 	void shoot(){
