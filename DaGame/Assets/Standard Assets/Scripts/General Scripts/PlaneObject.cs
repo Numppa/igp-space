@@ -7,8 +7,12 @@ public class PlaneObject : MonoBehaviour {
 	private bool selected = false;
 	private int guiSelection = 0;
 	public static PlaneObject selection;
-	public GameObject[] turrets;
-	public Texture[] images;
+	
+	private TurretModels turretModels;
+	void Start(){
+		GameObject turrets = GameObject.Find("Turrets");
+		turretModels = (TurretModels) turrets.GetComponent(typeof(TurretModels));
+	}
 	
 	void Update() {
 		if(selection != this) {
@@ -63,7 +67,7 @@ public class PlaneObject : MonoBehaviour {
 				bool buying = GUI.Button(rectButton, "Buy");
 				
 				if (buying && BaseShipBehaviour.getResources() >= 50) {
-					Instantiate(turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
+					Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
 					transform.SendMessageUpwards("ChangeResources", -50, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;
@@ -74,7 +78,7 @@ public class PlaneObject : MonoBehaviour {
 				bool buying = GUI.Button(rectButton, "Buy");
 				
 				if (buying && BaseShipBehaviour.getResources() >= 75) {
-					Instantiate(turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
+					Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
 					transform.SendMessageUpwards("ChangeResources", -75, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;
@@ -85,7 +89,7 @@ public class PlaneObject : MonoBehaviour {
 			}
 			
 			GUI.Box(rectInside, "");
-			guiSelection = GUI.SelectionGrid(rectInside, guiSelection, images, 3);
+			guiSelection = GUI.SelectionGrid(rectInside, guiSelection, turretModels.turretImages, 3);
 			
 						
 		}

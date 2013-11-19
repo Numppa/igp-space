@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BaseShipBehaviour : MonoBehaviour {
-	public Transform target;
+public class BaseShipBehaviour : MonoBehaviour {	
 	public float maxHealth;
 	public float repair;
 	public static float resources;
