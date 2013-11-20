@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyBehaviour : MonoBehaviour {
-	public int health;
+public class EnemyBehaviour : AbstractHitable {
+	public float health;
 	public int radarVisibility;
 	public GameObject[] weapons;
 	public float maxFireDistance;
@@ -25,7 +25,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		}
 	}
 	
-	void hit(int damage){
+	public override void Hit(float damage){
 		health -= damage;
 	}
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class BaseShipBehaviour : MonoBehaviour {	
+public class BaseShipBehaviour : AbstractHitable {	
 	public float maxHealth;
 	public float repair;
 	public static float resources;
@@ -19,6 +19,8 @@ public class BaseShipBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		health += repair;
+		ShootTheEnemy ste = gameObject.GetComponent<ShootTheEnemy>();
+		ste.timer ();
 	}
 
 	void OnGUI(){
@@ -34,7 +36,7 @@ public class BaseShipBehaviour : MonoBehaviour {
 		return resources;	
 	}
 	
-	public void Hit(float damage) {
+	public override void Hit(float damage) {
 		health -= damage;
 	}
 	

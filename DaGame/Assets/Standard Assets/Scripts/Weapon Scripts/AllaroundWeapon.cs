@@ -4,7 +4,7 @@ using System.Collections;
 public class AllaroundWeapon : AbstractWeapon {
 	
 	public Rigidbody bullet;
-	public float bulletSpeed;
+	//public float bulletSpeed;
 	public int weaponRestTime;
 	private int restTime;
 	
