@@ -6,6 +6,7 @@ public class EnemyBehaviour : AbstractHitable {
 	public int radarVisibility;
 	public GameObject[] weapons;
 	public float maxFireDistance;
+	public GameObject explosion;
 	
 	// Update is called once per frame
 	void Update () { 
@@ -21,7 +22,9 @@ public class EnemyBehaviour : AbstractHitable {
 				}
 		}
 		if (health <= 0){
+			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 			Destroy(gameObject);
+			Destroy(explo, 3);
 		}
 	}
 	
