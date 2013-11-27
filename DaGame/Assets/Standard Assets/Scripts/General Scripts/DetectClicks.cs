@@ -34,7 +34,7 @@ public class DetectClicks : MonoBehaviour {
 					Debug.Log("You left clicked " + hit.collider.gameObject.name,hit.collider.gameObject);
 				}
 				
-				hit.transform.gameObject.SendMessage("clicked", hit.point, SendMessageOptions.DontRequireReceiver);
+				hit.transform.gameObject.SendMessageUpwards("clicked", hit.point, SendMessageOptions.DontRequireReceiver);
 			}		
 		}
 		
