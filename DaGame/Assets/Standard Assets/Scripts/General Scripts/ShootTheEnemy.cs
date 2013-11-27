@@ -34,22 +34,21 @@ public class ShootTheEnemy : MonoBehaviour {
 		
 		//direction += closest.rigidbody.velocity * (direction.magnitude / (bulletSpeed - closest.rigidbody.velocity.magnitude));
 		
-		/*float speedDifference = Mathf.Pow (bulletSpeed, 2) / closest.rigidbody.velocity.sqrMagnitude - 1;
+		float speedDifference = Mathf.Pow (bulletSpeed, 2) / closest.rigidbody.velocity.sqrMagnitude - 1;
 		float angleEffect = Vector3.Project (direction, closest.rigidbody.velocity).magnitude;
 		float distanceEffect = direction.sqrMagnitude;
-		if ((speedDifference < korjauskerroin && speedDifference > -korjauskerroin) || false) {
-			direction -= closest.rigidbody.velocity.normalized * 0.5f * distanceEffect / angleEffect;
-			//Debug.Log("nopeusero hyvin pieni");
-		} else if ((angleEffect < korjauskerroin && angleEffect > -korjauskerroin) || false) {
-			//Debug.Log("kulma hyvin pieni");
-			direction -= closest.rigidbody.velocity * ( Mathf.Sqrt (distanceEffect * speedDifference) / speedDifference);
+		float sqrtThing = Mathf.Sqrt(Mathf.Pow (angleEffect, 2) + 
+				speedDifference * distanceEffect);
+		float theThing = 0;
+		if (sqrtThing > angleEffect) {
+			theThing = ((angleEffect - sqrtThing) / speedDifference);
 		} else {
-			//Debug.Log ("kaikesta huolimatta tällä mentiin");
-			direction += closest.rigidbody.velocity.normalized * 
-			(angleEffect + Mathf.Sqrt(Mathf.Pow (angleEffect, 2) + 
-				speedDifference * distanceEffect) / speedDifference);
-		}*/
-		direction += closest.rigidbody.velocity * (direction.magnitude / Mathf.Sqrt(Mathf.Pow (bulletSpeed, 2) - closest.rigidbody.velocity.sqrMagnitude));
+			theThing = -((angleEffect + sqrtThing) / speedDifference);
+		}
+		
+		direction -= closest.rigidbody.velocity.normalized * theThing;
+		
+		//direction += closest.rigidbody.velocity * (direction.magnitude / Mathf.Sqrt(Mathf.Pow (bulletSpeed, 2) - closest.rigidbody.velocity.sqrMagnitude));
 		
 		return direction;
 	}
