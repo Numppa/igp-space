@@ -23,6 +23,7 @@ public class PlaneObject : MonoBehaviour {
 		}
 		
 	}
+	
 
 	void OnMouseEnter() {
 		if (!hasTurret && !selected) {
@@ -68,9 +69,6 @@ public class PlaneObject : MonoBehaviour {
 				
 				if (buying && BaseShipBehaviour.getResources() >= 50) {
 					GameObject tur = Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-					tur.AddComponent<TurretBehaviour>();
-					tur.AddComponent<MeshRenderer>();
-					tur.AddComponent<BoxCollider>();
 					transform.SendMessageUpwards("ChangeResources", -50, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;
@@ -82,9 +80,6 @@ public class PlaneObject : MonoBehaviour {
 				
 				if (buying && BaseShipBehaviour.getResources() >= 75) {
 					GameObject tur = Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-					tur.AddComponent<TurretBehaviour>();
-					tur.AddComponent<MeshRenderer>();
-					tur.AddComponent<BoxCollider>();
 					transform.SendMessageUpwards("ChangeResources", -75, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;
