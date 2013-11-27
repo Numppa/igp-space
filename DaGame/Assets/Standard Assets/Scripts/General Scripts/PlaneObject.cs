@@ -67,7 +67,10 @@ public class PlaneObject : MonoBehaviour {
 				bool buying = GUI.Button(rectButton, "Buy");
 				
 				if (buying && BaseShipBehaviour.getResources() >= 50) {
-					Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
+					GameObject tur = Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+					tur.AddComponent<TurretBehaviour>();
+					tur.AddComponent<MeshRenderer>();
+					tur.AddComponent<BoxCollider>();
 					transform.SendMessageUpwards("ChangeResources", -50, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;
@@ -78,7 +81,10 @@ public class PlaneObject : MonoBehaviour {
 				bool buying = GUI.Button(rectButton, "Buy");
 				
 				if (buying && BaseShipBehaviour.getResources() >= 75) {
-					Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation);
+					GameObject tur = Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+					tur.AddComponent<TurretBehaviour>();
+					tur.AddComponent<MeshRenderer>();
+					tur.AddComponent<BoxCollider>();
 					transform.SendMessageUpwards("ChangeResources", -75, SendMessageOptions.DontRequireReceiver);
 					selected = false;
 					hasTurret = true;

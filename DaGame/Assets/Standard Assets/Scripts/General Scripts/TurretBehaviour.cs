@@ -3,18 +3,19 @@ using System.Collections;
 
 public class TurretBehaviour : MonoBehaviour {
 	public AbstractWeapon weapon;
-	private bool selected;
+	private UnitManager unitManager;
+	private GameObject target;
 	
 	private GameObject[] enemies;
 	// Use this for initialization
 	void Start () {
 		enemies = GameObject.FindGameObjectsWithTag("enemy");
-		selected = false;
+		unitManager = GameObject.FindWithTag("UnitManager").GetComponent<UnitManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (selected) {
+		if (unitManager.isSelected(gameObject)) {
 			renderer.material.color = Color.blue;
 		} else {
 			if (renderer.material.color == Color.blue) {
@@ -28,12 +29,19 @@ public class TurretBehaviour : MonoBehaviour {
 	}
 	
 	void clicked() {
-		selected = true;	
+		
+		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
+			unitManager.selectAdditionalUnit(gameObject);
+		} else {
+			unitManager.selectSingleUnit(gameObject);
+		}
+	
 	}
 	
-	void deSelect() {
-	 	selected = false;	
+	void targetEnemy(GameObject enemy) {
+		target = enemy;
 	}
+	
 	
 	GameObject findClosestEnemy(){
 		return null; 
