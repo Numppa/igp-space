@@ -9,26 +9,8 @@ public class ShootTheEnemy : MonoBehaviour {
 	public GameObject[] weapons;
 	public float maxFireDistance;
 	
-	private GameObject FindClosestEnemy() {
-        GameObject[] enemies;
-        enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-		if (enemies.Length == 0) {
-			return null;
-		}
-        GameObject closest = enemies[0];
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject enemy in enemies) {
-            Vector3 difference = enemy.transform.position - position;
-            float currentDistance = difference.sqrMagnitude;
-            if (currentDistance < distance) {
-                closest = enemy;
-                distance = currentDistance;
-            }
-        }
-        return closest;
-    }
-	
+
+	private GameObject[] enemies;
 	private Vector3 calculateDirection(GameObject closest, float bulletSpeed) {
 		Vector3 direction = closest.transform.position - transform.position;
 		
@@ -70,4 +52,23 @@ public class ShootTheEnemy : MonoBehaviour {
 			}
 		}
 	}
+	
+	private GameObject FindClosestEnemy() {
+        enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+		if (enemies.Length == 0) {
+			return null;
+		}
+        GameObject closest = enemies[0];
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject enemy in enemies) {
+            Vector3 difference = enemy.transform.position - position;
+            float currentDistance = difference.sqrMagnitude;
+            if (currentDistance < distance) {
+                closest = enemy;
+                distance = currentDistance;
+            }
+        }
+        return closest;
+    }
 }
