@@ -10,10 +10,11 @@ public class TurretBehaviour : MonoBehaviour {
 	private UnitManager unitManager;
 	private GameObject target;
 	private GameObject[] enemies;
+	private float sumToY = 5;
 	// Use this for initialization
 	void Start () {
 		Vector3 pos = transform.position;
-		pos.y += 5;
+		pos.y += sumToY;
 		weapon = Instantiate(weapon, pos, transform.rotation) as AbstractWeapon;
 		unitManager = GameObject.FindWithTag("UnitManager").GetComponent<UnitManager>();
 	}
@@ -74,7 +75,7 @@ public class TurretBehaviour : MonoBehaviour {
 	
 	private Vector3 calculateDirection(GameObject closest, float bulletSpeed) {
 		Vector3 direction = closest.transform.position - transform.position;
-		
+		direction.y -= sumToY;
 		//direction += closest.rigidbody.velocity * (direction.magnitude / (bulletSpeed - closest.rigidbody.velocity.magnitude));
 		
 		float speedDifference = Mathf.Pow (bulletSpeed, 2) / closest.rigidbody.velocity.sqrMagnitude - 1;
