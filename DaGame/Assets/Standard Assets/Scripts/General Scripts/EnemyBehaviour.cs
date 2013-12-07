@@ -8,6 +8,7 @@ public class EnemyBehaviour : AbstractHitable {
 	public float maxFireDistance;
 	public GameObject explosion;
 	public int bounty;
+	public AudioClip explosionSound;
 	
 	// Update is called once per frame
 	void Update () { 
@@ -30,7 +31,15 @@ public class EnemyBehaviour : AbstractHitable {
 		if (health <= 0){
 			GameObject.FindWithTag("spehsShip").BroadcastMessage("ChangeResources", bounty);
 			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-			Destroy(gameObject);
+			foreach (Component item in GetComponents<Component>()) {
+				if (!item.GetType.Equals (AudioSource)) {
+					item.SetActive(false);
+				}
+			}
+			AudioSource audS = GetComponent<AudioSource>();
+			audS.enabled = true;
+			audio.PlayOneShot(explosionSound);
+			Destroy(gameObject, explosionSound.length);
 			Destroy(explo, 3);
 		}
 	}
