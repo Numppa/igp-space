@@ -6,6 +6,7 @@ public class TurretBehaviour : MonoBehaviour {
 	public string enemyTag;
 	public float maxFireDistance;
 	public float korjauskerroin = 1;
+	public bool missile = false;
 	
 	private float angle = Mathf.PI / 4;
 	
@@ -42,8 +43,13 @@ public class TurretBehaviour : MonoBehaviour {
 	
 	void shoot(){
 		if (target != null && !targetTooFar ()){
-			Vector3 direction = calculateDirection(target, weapon.bulletSpeed);
-			weapon.shoot(direction);
+			if (!missile) {
+				Vector3 direction = calculateDirection(target, weapon.bulletSpeed);
+				weapon.shoot(direction);
+			} else {
+				weapon.shoot (target.transform.position, target.transform);
+			}
+			
 		}
 	}
 	
