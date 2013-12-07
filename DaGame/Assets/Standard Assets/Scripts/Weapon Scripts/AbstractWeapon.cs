@@ -8,6 +8,10 @@ abstract public class AbstractWeapon : MonoBehaviour {
 	public abstract void shoot(Vector3 direction);
 	public abstract void timer();
 	
+	
+	public void shoot(GameObject target){
+	}
+	
 	public float bulletSpeeds() {
 		return bulletSpeed;
 	}
