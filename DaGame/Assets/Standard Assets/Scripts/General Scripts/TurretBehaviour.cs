@@ -7,6 +7,8 @@ public class TurretBehaviour : MonoBehaviour {
 	public float maxFireDistance;
 	public float korjauskerroin = 1;
 	
+	private float angle = Mathf.PI / 4;
+	
 	private UnitManager unitManager;
 	private GameObject target;
 	private GameObject[] enemies;
@@ -28,13 +30,19 @@ public class TurretBehaviour : MonoBehaviour {
 				renderer.material.color = Color.white;
 			}
 		}
+		if (target == null) {
+			findNewTarget();
+		}
 		shoot();
 	}
 	
+	private void findNewTarget() {
+		targetEnemy(FindClosestEnemy());
+	}
+	
 	void shoot(){
-		GameObject closestEnemy = FindClosestEnemy();
-		if (closestEnemy != null && closestEnemy.transform.position.sqrMagnitude < maxFireDistance){
-			Vector3 direction = calculateDirection(closestEnemy, weapon.bulletSpeed);
+		if (target != null && target.transform.position.sqrMagnitude < maxFireDistance){
+			Vector3 direction = calculateDirection(target, weapon.bulletSpeed);
 			weapon.shoot(direction);
 		}
 	}
@@ -59,27 +67,41 @@ public class TurretBehaviour : MonoBehaviour {
 		if (enemies.Length == 0) {
 			return null;
 		}
-        GameObject closest = enemies[0];
+        //GameObject closest = enemies[0];
+		GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         foreach (GameObject enemy in enemies) {
-            Vector3 difference = enemy.transform.position - position;
-            float currentDistance = difference.sqrMagnitude;
-            if (currentDistance < distance) {
-                closest = enemy;
-                distance = currentDistance;
-            }
+			if (enemyInSector(enemy.transform.position)) {
+				Vector3 difference = enemy.transform.position - position;
+            	float currentDistance = difference.sqrMagnitude;
+            	if (currentDistance < distance) {
+            	    closest = enemy;
+            	    distance = currentDistance;
+            	}
+			}
+            
         }
         return closest;
     }
+			
+	private bool enemyInSector(Vector3 enemyPosition) {
+		Vector3 addVector = new Vector3(0, transform.position.magnitude, 0);
+		Vector3 middleSector = transform.position + addVector;
+		if (Vector3.Dot (middleSector.normalized, enemyPosition.normalized) > Mathf.Cos (angle)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
-	private Vector3 calculateDirection(GameObject closest, float bulletSpeed) {
-		Vector3 direction = closest.transform.position - transform.position;
+	private Vector3 calculateDirection(GameObject target, float bulletSpeed) {
+		Vector3 direction = target.transform.position - transform.position;
 		direction.y -= sumToY;
 		//direction += closest.rigidbody.velocity * (direction.magnitude / (bulletSpeed - closest.rigidbody.velocity.magnitude));
 		
-		float speedDifference = Mathf.Pow (bulletSpeed, 2) / closest.rigidbody.velocity.sqrMagnitude - 1;
-		float angleEffect = Vector3.Project (direction, closest.rigidbody.velocity).magnitude;
+		float speedDifference = Mathf.Pow (bulletSpeed, 2) / target.rigidbody.velocity.sqrMagnitude - 1;
+		float angleEffect = Vector3.Project (direction, target.rigidbody.velocity).magnitude;
 		float distanceEffect = direction.sqrMagnitude;
 		float sqrtThing = Mathf.Sqrt(Mathf.Pow (angleEffect, 2) + 
 				speedDifference * distanceEffect);
@@ -90,7 +112,7 @@ public class TurretBehaviour : MonoBehaviour {
 			theThing = -((angleEffect + sqrtThing) / speedDifference);
 		}
 		
-		direction -= closest.rigidbody.velocity.normalized * theThing;
+		direction -= target.rigidbody.velocity.normalized * theThing;
 		
 		//direction += closest.rigidbody.velocity * (direction.magnitude / Mathf.Sqrt(Mathf.Pow (bulletSpeed, 2) - closest.rigidbody.velocity.sqrMagnitude));
 		
