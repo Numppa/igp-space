@@ -30,6 +30,8 @@ public class missileWeapon : AbstractWeapon {
 			if (shots <= 0){
 				shots = shotsBeforeReload;
 				restTime = weaponRestTime;
+			} else {
+				nextMissile = waitTimeBeforeNextMissile;
 			}
 			Rigidbody shootedMissile = Instantiate(missile, transform.position, transform.rotation) as Rigidbody;
 			
