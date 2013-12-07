@@ -30,7 +30,7 @@ public class TurretBehaviour : MonoBehaviour {
 				renderer.material.color = Color.white;
 			}
 		}
-		if (target == null) {
+		if (target == null || targetTooFar()) {
 			findNewTarget();
 		}
 		shoot();
@@ -41,10 +41,14 @@ public class TurretBehaviour : MonoBehaviour {
 	}
 	
 	void shoot(){
-		if (target != null && target.transform.position.sqrMagnitude < maxFireDistance){
+		if (target != null && !targetTooFar ()){
 			Vector3 direction = calculateDirection(target, weapon.bulletSpeed);
 			weapon.shoot(direction);
 		}
+	}
+	
+	private bool targetTooFar() {
+		return target.transform.position.sqrMagnitude > maxFireDistance;
 	}
 	
 	void clicked() {
