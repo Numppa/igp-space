@@ -31,13 +31,7 @@ public class EnemyBehaviour : AbstractHitable {
 		if (health <= 0){
 			GameObject.FindWithTag("spehsShip").BroadcastMessage("ChangeResources", bounty);
 			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-			foreach (Component item in GetComponents<Component>()) {
-				if (!item.GetType.Equals (AudioSource)) {
-					item.SetActive(false);
-				}
-			}
-			AudioSource audS = GetComponent<AudioSource>();
-			audS.enabled = true;
+			collider.enabled = false;
 			audio.PlayOneShot(explosionSound);
 			Destroy(gameObject, explosionSound.length);
 			Destroy(explo, 3);
