@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class GatlingWeapon : AbstractWeapon {
-	public bool friendly;
 	public int weaponRestTime;
 	public int shotsBeforeReload;
 	public Rigidbody bullet;

@@ -4,6 +4,7 @@ using System.Collections;
 public class LaserWeapon : AbstractWeapon {
 	public int weaponRestTime;
 	public float weaponShootTime;
+	public LaserBeam beam;
 	
 	
 	private int restTime;
@@ -20,7 +21,17 @@ public class LaserWeapon : AbstractWeapon {
 	}
 	
 	public override void shoot (Vector3 direction) {
-		weaponShootTime -= 1;
+	}
+	
+	public override void shoot (Vector3 direction, Transform target) {
+		if (shootTime > 0){
+			weaponShootTime -= 1.0f;
+			LaserBeam shootedBeam = Instantiate(beam, transform.position , transform.rotation) as LaserBeam;
+			shootedBeam.target = target;
+			
+		} else {
+			restTime = weaponRestTime;
+		}
 	}
 	
 	public override void timer () {
