@@ -25,12 +25,13 @@ public class LaserWeapon : AbstractWeapon {
 	
 	public override void shoot (Vector3 direction, Transform target) {
 		if (shootTime > 0){
-			weaponShootTime -= 1.0f;
+			shootTime -= 1.0f;
 			LaserBeam shootedBeam = Instantiate(beam, transform.position , transform.rotation) as LaserBeam;
 			shootedBeam.target = target;
-			
-		} else {
-			restTime = weaponRestTime;
+		
+			if (shootTime <= 0){
+				restTime = weaponRestTime;
+			}
 		}
 	}
 	
