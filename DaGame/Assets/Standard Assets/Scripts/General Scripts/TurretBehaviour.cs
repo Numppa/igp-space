@@ -9,6 +9,8 @@ public class TurretBehaviour : MonoBehaviour {
 	public bool missile = false;
 	
 	private float angle = Mathf.PI / 4;
+	public GameObject selectionIndicator;
+	private Object selectionInd;
 	
 	private UnitManager unitManager;
 	private GameObject target;
@@ -26,10 +28,10 @@ public class TurretBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (unitManager.isSelected(gameObject)) {
-			renderer.material.color = Color.blue;
+			
 		} else {
-			if (renderer.material.color == Color.blue) {
-				renderer.material.color = Color.white;
+			if (selectionInd != null) {
+				Destroy(selectionInd);
 			}
 		}
 		if (target == null || targetTooFar()) {
@@ -62,10 +64,14 @@ public class TurretBehaviour : MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
 			unitManager.selectAdditionalUnit(gameObject);
-			renderer.material.color = Color.blue;
+			if (selectionInd == null) {
+				selectionInd = Instantiate(selectionIndicator, transform.position, transform.rotation) as GameObject;
+			}
 		} else {
 			unitManager.selectSingleUnit(gameObject);
-			renderer.material.color = Color.blue;
+			if (selectionInd == null) {
+				selectionInd = Instantiate(selectionIndicator, transform.position, transform.rotation) as GameObject;
+			}
 		}
 	
 	}
