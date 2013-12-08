@@ -29,11 +29,11 @@ public class EnemyBehaviour : AbstractHitable {
 	public override void Hit(float damage){
 		health -= damage;
 		if (health <= 0){
-			GameObject.FindWithTag("spehsShip").BroadcastMessage("ChangeResources", bounty);
-			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 			collider.enabled = false;
 			audio.PlayOneShot(explosionSound);
-			Destroy(gameObject, explosionSound.length);
+			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+			Destroy(gameObject);
+			GameObject.FindWithTag("spehsShip").BroadcastMessage("ChangeResources", bounty);
 			Destroy(explo, 3);
 		}
 	}
