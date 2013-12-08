@@ -85,8 +85,17 @@ public class PlaneObject : MonoBehaviour {
 					hasTurret = true;
 				}
 				
+			} else if (guiSelection == 2) {
+			 	GUI.TextArea(rectBelow,"Info:");
+				bool buying = GUI.Button(rectButton, "Buy");
+				
+				if (buying && BaseShipBehaviour.getResources() >= 75) {
+					GameObject tur = Instantiate(turretModels.turrets[guiSelection], gameObject.transform.position, gameObject.transform.rotation) as GameObject;
+					transform.SendMessageUpwards("ChangeResources", -75, SendMessageOptions.DontRequireReceiver);
+					selected = false;
+					hasTurret = true;
+				}
 			} else {
-			 	
 			}
 			
 			GUI.Box(rectInside, "");
