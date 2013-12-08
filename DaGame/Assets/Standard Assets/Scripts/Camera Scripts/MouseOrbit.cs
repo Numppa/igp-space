@@ -10,15 +10,11 @@ public class MouseOrbit : MonoBehaviour {
 	private float z;
 	private float x;
 	private float y;
-	private bool eDown;
-	private bool qDown;
 	// Use this for initialization
 	void Start (){
 		z = 300.0f;
 		x = 1.0f;
 		y = 1.0f;
-		eDown = false;
-		qDown = false;
 	}
 	
 	// Update is called once per frame

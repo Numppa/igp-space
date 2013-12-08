@@ -7,6 +7,8 @@ public class EnemyBehaviour : AbstractHitable {
 	public GameObject[] weapons;
 	public float maxFireDistance;
 	public GameObject explosion;
+	public int bounty;
+	public AudioClip explosionSound;
 	
 	// Update is called once per frame
 	void Update () { 
@@ -21,14 +23,18 @@ public class EnemyBehaviour : AbstractHitable {
 					aw.timer ();
 				}
 		}
-		if (health <= 0){
-			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-			Destroy(gameObject);
-			Destroy(explo, 3);
-		}
+
 	}
 	
 	public override void Hit(float damage){
 		health -= damage;
+		if (health <= 0){
+			GameObject.FindWithTag("spehsShip").BroadcastMessage("ChangeResources", bounty);
+			GameObject explo = (GameObject) Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+			collider.enabled = false;
+			audio.PlayOneShot(explosionSound);
+			Destroy(gameObject, explosionSound.length);
+			Destroy(explo, 3);
+		}
 	}
 }

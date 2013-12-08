@@ -3,6 +3,9 @@
 // 19 April 2009
 // Uploaded to Unify Community Wiki on 19 April 2009
 // URL: http://www.unifycommunity.com/wiki/index.php?title=SeekSteer
+
+
+//edited by space D
 using UnityEngine;
 using System.Collections;
  
@@ -15,6 +18,8 @@ public class SeekSteer : MonoBehaviour
     public bool loop = false;
     public float speed = 2.0f;
     public bool faceHeading = true;
+	
+	public bool missile = false;
  
     private Vector3 currentHeading,targetHeading;
     private int targetwaypoint;
@@ -25,7 +30,10 @@ public class SeekSteer : MonoBehaviour
  
     // Use this for initialization
     protected void Start ()
-    {
+	{
+		if (waypointsGone()) {
+			return;
+		}
         xform = transform;
         currentHeading = xform.forward;
         if(waypoints.Length<=0)
@@ -49,14 +57,33 @@ public class SeekSteer : MonoBehaviour
     // calculates a new heading
     protected void FixedUpdate ()
     {
+		if (waypointsGone()) {
+			return;
+		}
         targetHeading = waypoints[targetwaypoint].position - xform.position;
- 
-        currentHeading = Vector3.Lerp(currentHeading,targetHeading,damping*Time.deltaTime);
+ 		if (missile) {
+			currentHeading = targetHeading.normalized;
+		} else {
+        	currentHeading = Vector3.Lerp(currentHeading,targetHeading,damping*Time.deltaTime);
+		}
     }
+	
+	private bool waypointsGone() {
+		bool gone = false;
+		foreach (Transform waypoint in waypoints) {
+			if (waypoint == null) {
+				gone = true;
+			}
+		}
+		return gone;
+	}
  
     // moves us along current heading
     protected void Update()
     {
+		if (waypointsGone()) {
+			return;
+		}
     	if(useRigidbody)
     		rigidmember.velocity = currentHeading * speed;
     	else
@@ -80,6 +107,9 @@ public class SeekSteer : MonoBehaviour
     // draws red line from waypoint to waypoint
     public void OnDrawGizmos()
     {
+		if (waypointsGone()) {
+			return;
+		}
         Gizmos.color = Color.red;
         if(waypoints==null)
             return;

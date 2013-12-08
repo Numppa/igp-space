@@ -28,9 +28,12 @@ public class GatlingWeapon : AbstractWeapon {
 		if (restTime <= 0 && nextBullet <= 0){
 			shots--;
 			if (shots <= 0){
-				shots = shotsBeforeReload;
 				restTime = weaponRestTime;
+				shots = shotsBeforeReload;
+			} else {
+				nextBullet = waitTimeBeforeNextBullet;
 			}
+
 			Rigidbody shootedBullet = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody;
 			
 			direction.Normalize();
