@@ -1,25 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof(LineRenderer))]
 
 public class LaserBeam : MonoBehaviour {
 	
-	public float width;
-	public float length;
-	public Color color;
+	public LineRenderer lineRenderer;
+	public Transform target;
+	public int aliveCount;
+	public float damage;
 	
 	
-	private LineRenderer lineRenderer;
 	// Use this for initialization
 	void Start () {
 		lineRenderer = GetComponent<LineRenderer>();
-		lineRenderer.SetWidth(width, width);
-		lineRenderer.SetColors(color, color);
-		
+		lineRenderer.SetPosition(0, transform.position);
+		lineRenderer.SetPosition(1, target.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (aliveCount > 0){
+			aliveCount--;
+		} else {
+			if (target){
+				target.SendMessage("Hit", damage);
+			}
+			Destroy(gameObject);
+		}
 	}
+	
 }
