@@ -1,0 +1,17 @@
+We made this 'ShooterSpace' project unsing Unity 3d game engine anf we used C# as the main scripting language. 
+Generally we are satisfied with Unity because of it's easiness. 
+The most challengin part of doing this project was to find a good way to control all shooting objects. 
+That UML diagram (i'm not sure if it is pure UML) is showing how the most important parts if the game are interacting with each other. 
+For example the diagram shows that turrets and enemies are using same weapon scripts (partly). 
+
+There is a lot of things that we didn't manage to do before deadline, for example:
+-differend enemy ships
+-boss
+-more levels
+-radar
+-boosts
+etc
+
+Some of these are partly made but they didn't make it in time. 
+
+But probably we will continue developing this game further and I think the first thing to do is massive refactoring.
