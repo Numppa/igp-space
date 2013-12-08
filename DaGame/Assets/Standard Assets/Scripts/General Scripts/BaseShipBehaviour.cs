@@ -5,11 +5,14 @@ public class BaseShipBehaviour : AbstractHitable {
 	public float maxHealth;
 	public float repair;
 	public static float resources;
+	public GUIText youLose;
+	public float youLoseDelay = 3.0f;
 	
 	private float health;
 	
 	// Use this for initialization
 	void Start () {
+		youLose.enabled = false;
 		renderer.material.color = Color.white;
 		maxHealth = 1000.0f;
 		repair = -0.0f;
@@ -26,12 +29,20 @@ public class BaseShipBehaviour : AbstractHitable {
 			Application.Quit();
 		}
 		if(Input.GetKeyDown(KeyCode.P))	 {        
-				if (Time.timeScale == 1.0f) {            
-		    		Time.timeScale = 0.0f;
-				} else {
-		    		Time.timeScale = 1.0f;
-				}
+			if (Time.timeScale == 1.0f) {            
+		   		Time.timeScale = 0.0f;
+			} else {
+	    		Time.timeScale = 1.0f;
+			}
 		}
+		if (health <= 0) {
+			youLose.enabled = true;
+			Invoke("end", youLoseDelay);
+		}
+	}
+	
+	private void end() {
+		Application.LoadLevel(0);
 	}
 
 	void OnGUI(){
