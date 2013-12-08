@@ -16,6 +16,7 @@ public class TurretBehaviour : MonoBehaviour {
 	private float sumToY = 5;
 	// Use this for initialization
 	void Start () {
+		
 		Vector3 pos = transform.position;
 		pos.y += sumToY;
 		weapon = Instantiate(weapon, pos, transform.rotation) as AbstractWeapon;
@@ -61,8 +62,10 @@ public class TurretBehaviour : MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
 			unitManager.selectAdditionalUnit(gameObject);
+			renderer.material.color = Color.blue;
 		} else {
 			unitManager.selectSingleUnit(gameObject);
+			renderer.material.color = Color.blue;
 		}
 	
 	}

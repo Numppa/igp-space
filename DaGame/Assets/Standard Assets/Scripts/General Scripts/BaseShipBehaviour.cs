@@ -10,6 +10,7 @@ public class BaseShipBehaviour : AbstractHitable {
 	
 	// Use this for initialization
 	void Start () {
+		renderer.material.color = Color.white;
 		maxHealth = 1000.0f;
 		repair = -0.0f;
 		resources = 150f;
