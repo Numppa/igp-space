@@ -25,6 +25,13 @@ public class BaseShipBehaviour : AbstractHitable {
 		if (Input.GetKey("escape")) {
 			Application.Quit();
 		}
+		if(Input.GetKeyDown(KeyCode.P))	 {        
+				if (Time.timeScale == 1.0f) {            
+		    		Time.timeScale = 0.0f;
+				} else {
+		    		Time.timeScale = 1.0f;
+				}
+		}
 	}
 
 	void OnGUI(){
