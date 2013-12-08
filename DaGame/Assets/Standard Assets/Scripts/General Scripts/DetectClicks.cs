@@ -46,7 +46,7 @@ public class DetectClicks : MonoBehaviour {
 					Debug.Log("You right clicked " + hit.collider.gameObject.name,hit.collider.gameObject);
 				}
 				foreach(GameObject unit in unitManager.getSelectedUnits()) {
-					unit.transform.gameObject.SendMessage("targetEnemy", hit.point, SendMessageOptions.DontRequireReceiver);
+					unit.transform.gameObject.SendMessageUpwards("targetEnemy", hit.point, SendMessageOptions.DontRequireReceiver);
 				}
 			}		
 		}
