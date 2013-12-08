@@ -22,6 +22,9 @@ public class BaseShipBehaviour : AbstractHitable {
 		health += repair;
 		ShootTheEnemy ste = gameObject.GetComponent<ShootTheEnemy>();
 		ste.timer ();
+		if (Input.GetKey("escape")) {
+			Application.Quit();
+		}
 	}
 
 	void OnGUI(){
