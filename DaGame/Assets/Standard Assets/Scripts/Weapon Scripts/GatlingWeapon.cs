@@ -32,7 +32,11 @@ public class GatlingWeapon : AbstractWeapon {
 			} else {
 				nextBullet = waitTimeBeforeNextBullet;
 			}
-
+			
+			direction.x += Random.Range(direction.x - (direction.x / 10), direction.x + (direction.x / 10));
+			direction.y += Random.Range(direction.y - (direction.y / 10), direction.y + (direction.y / 10));
+			direction.z += Random.Range(direction.z - (direction.z / 10), direction.z + (direction.z / 10));
+			
 			Rigidbody shootedBullet = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody;
 			
 			direction.Normalize();
