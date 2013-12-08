@@ -9,6 +9,6 @@ Controls:
 P-    		Pause your game
 Esc-  		Exit the game
 Right click- 	Target enemy (or switch target)
-Left click-	Select
+Left click-	Select (you can select multiple turrets by pressing shift)
 Scrollwheel-	Zoom in/zoom out
 Middle click- 	Drag the camera around
