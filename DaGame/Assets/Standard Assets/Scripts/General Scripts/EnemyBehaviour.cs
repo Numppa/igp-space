@@ -12,6 +12,9 @@ public class EnemyBehaviour : AbstractHitable {
 	
 	// Update is called once per frame
 	void Update () { 
+		if (Time.timeScale == 0) {
+			return;
+		}
 		foreach (GameObject w in weapons) {
 				AbstractWeapon aw = w.GetComponent<AbstractWeapon>();
 				if (aw != null) {

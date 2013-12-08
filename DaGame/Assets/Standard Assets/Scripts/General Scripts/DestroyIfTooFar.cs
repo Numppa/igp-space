@@ -15,6 +15,9 @@ public class DestroyIfTooFar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Time.timeScale == 0) {
+			return;
+		}
 		if (transform.position.sqrMagnitude > distance) {
 			Destroy (gameObject);
 		}
